@@ -10,7 +10,6 @@ import firebase from 'firebase'
 
 // Your web app's Firebase configuration
   // Initialize Firebase
-  console.log(firebaseConfig)
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   firebase.auth();
