@@ -5,6 +5,24 @@ import { ButtonContainer } from './Button'
 
 export default class Details extends Component {
     render() {
+        // const [isAuthed] = this.props
+
+        // let buttonCart
+        // if(isAuthed){
+        //     buttonCart = <ButtonContainer 
+        //                 cart
+        //                 disabled={inCart}
+        //                 onClick={()=>{
+        //                     value.addToCart(id)
+        //                     value.openModal(id)
+        //                 }}>
+
+                        
+        //                     {inCart? "in cart" : "add to cart"}
+        //                 </ButtonContainer>
+        // }else{
+        //     buttonCart = <div></div>
+        // }
         return (
             <ProductConsumer>
                 {value => {
@@ -46,18 +64,20 @@ export default class Details extends Component {
                                                 back to products
                                             </ButtonContainer>
                                         </Link>
-
-                                        <ButtonContainer 
-                                        cart
-                                        disabled={inCart}
-                                        onClick={()=>{
-                                            value.addToCart(id)
-                                            value.openModal(id)
-                                        }}>
-
+                                        {
+                                        this.props.isAuthed?<ButtonContainer 
+                                                        cart
+                                                        disabled={inCart}
+                                                        onClick={()=>{
+                                                            value.addToCart(id)
+                                                            value.openModal(id)
+                                                        }}>
+                                
+                                                        
+                                                            {inCart? "in cart" : "add to cart"}
+                                                        </ButtonContainer>:<div></div>
+                                        }
                                         
-                                            {inCart? "in cart" : "add to cart"}
-                                        </ButtonContainer>
                                     </div>
                                 </div>
                             </div>

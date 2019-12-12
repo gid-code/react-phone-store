@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import {Link,Redirect,withRouter} from 'react-router-dom'
 import {ProductConsumer} from '../context'
 import PropTypes from 'prop-types'
 
-export default class Product extends Component {
+class Product extends Component {
     render() {
         const {id,title,img,price,inCart} = this.props.product;
+        const {signIn,isAuth} = this.props
+
+        const redirectToSignIn = () => {
+            this.props.history.push('/signin')
+        }
         return (
             <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
                 <div className="card">
@@ -19,9 +24,10 @@ export default class Product extends Component {
                                 
                             </Link>
                             <button className="cart-btn" disabled={inCart}
-                            onClick={()=>{
+                            onClick={isAuth?()=>{
                                 value.addToCart(id)
-                                value.openModal(id)}}>
+                                value.openModal(id)}:
+                            redirectToSignIn}>
                                 {inCart?(<p className="text-capitalize mb-0" disabled>{" "}in cart</p>):
                             (<i className="fas fa-cart-plus"/>)}
                             </button>
@@ -112,3 +118,5 @@ const ProductWrapper = styled.div`
         cursor: pointer;
     }
 `;
+
+export default withRouter(Product)

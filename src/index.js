@@ -5,6 +5,14 @@ import App from './App';
 import {ProductProvider} from './context'
 import {BrowserRouter as Router} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import firebaseConfig from './config/keys'
+import firebase from 'firebase'
+
+// Your web app's Firebase configuration
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  firebase.auth();
 
 ReactDOM.render(
     <ProductProvider>
